@@ -12,7 +12,7 @@ class Contact extends Component {
     const { name, email, phone } = this.props;
     return (
       <div>
-        <h4>Name: {name}</h4>
+        <h4 className="">Name: {name}</h4>
         <li>Email: {email}</li>
         <li>Phone: {phone}</li>
       </div>
