@@ -5,10 +5,8 @@ class Contact extends Component {
   state = { showContactInfo: false };
 
   static propTypes = {
-    contact: PropTypes.object.isRequired
-    // name: PropTypes.string.isRequired,
-    // email: PropTypes.string.isRequired,
-    // phone: PropTypes.string.isRequired
+    contact: PropTypes.object.isRequired,
+    deleteClickHendler: PropTypes.func.isRequired
   };
 
   onShowClick = (name, e) => {
@@ -16,9 +14,11 @@ class Contact extends Component {
       showContactInfo: !this.state.showContactInfo
     });
   };
+  onDeleteClick = e => {
+    this.props.deleteClickHendler();
+  };
 
   render() {
-    // const { name, email, phone } = this.props;
     const { name, email, phone } = this.props.contact;
     const { showContactInfo } = this.state;
 
@@ -29,6 +29,12 @@ class Contact extends Component {
           <i
             onClick={this.onShowClick.bind(this, name)}
             className="fas fa-sort-down"
+            style={{ cursor: "pointer" }}
+          />
+          <i
+            onClick={this.onDeleteClick}
+            className="fas fa-times"
+            style={{ cursor: "pointer", float: "right", color: "black" }}
           />
         </h4>
         {showContactInfo && (

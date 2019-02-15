@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header branding="Contact manager!!!" /> */}
         <Header />
         <div className="container">
           <Contacts />
