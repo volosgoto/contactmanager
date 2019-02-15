@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import Contact from './Contact';
-
+import React, { Component } from "react";
+import Contact from "./Contact";
 
 class Contacts extends Component {
   state = {
@@ -24,24 +23,23 @@ class Contacts extends Component {
         phone: "555-55-55"
       }
     ]
-  }
-
+  };
 
   render() {
     const { contacts } = this.state;
     return (
-      <div>
+      <React.Fragment>
         {contacts.map(contact => (
           <Contact
             key={contact.id}
             contact={contact}
-          // name={contact.name}
-          // email={contact.email}
-          // phone={contact.phone}
+            // name={contact.name}
+            // email={contact.email}
+            // phone={contact.phone}
           />
         ))}
-      </div>
-    )
+      </React.Fragment>
+    );
   }
 }
 
