@@ -1,3 +1,5 @@
+//  Uncontrolled Components & Refs
+
 import React, { Component } from 'react'
 
 class AddContact extends Component {
@@ -5,30 +7,31 @@ class AddContact extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: '',
-      email: '',
-      phone: ''
+    this.nameInput = React.createRef();
+    this.emailInput = React.createRef();
+    this.phoneInput = React.createRef();
 
-    };
-
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    console.log(e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
+  static defaultProps = {
+    name: 'Bob Bylan',
+    email: 'Bob_Bylan@mai.com',
+    phone: '111-11-11'
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
-
+    const contact = {
+      name: this.nameInput.current.value,
+      email: this.emailInput.current.value,
+      phone: this.phoneInput.current.value
+    }
+    console.log(contact);
   }
 
   render() {
-    const { name, email, phone } = this.state;
+    const { name, email, phone } = this.props;
     return (
       <div className="card mb-3">
         <div className="card-header">
@@ -42,8 +45,9 @@ class AddContact extends Component {
                 className="form-control form-control-lg"
                 name="name"
                 type="text"
-                value={name}
-                onChange={this.handleChange}
+                defaultValue={name}
+                ref={this.nameInput}
+
               />
             </div>
             <div className="form-group">
@@ -52,8 +56,9 @@ class AddContact extends Component {
                 className="form-control form-control-lg"
                 name="email"
                 type="email"
-                value={email}
-                onChange={this.handleChange}
+                defaultValue={email}
+                ref={this.emailInput}
+
               />
             </div>
             <div className="form-group">
@@ -62,8 +67,9 @@ class AddContact extends Component {
                 className="form-control form-control-lg"
                 name="phone"
                 type="text"
-                value={phone}
-                onChange={this.handleChange}
+                defaultValue={phone}
+                ref={this.phoneInput}
+
               />
             </div>
             <input
