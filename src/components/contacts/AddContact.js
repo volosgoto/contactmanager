@@ -6,7 +6,9 @@ class AddContact extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      name: '',
+      email: '',
+      phone: ''
 
     };
 
@@ -16,8 +18,7 @@ class AddContact extends Component {
 
   handleChange(e) {
     console.log(e.target.value);
-    let statePropName = e.target.name;
-    this.setState({ statePropName: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
@@ -27,22 +28,41 @@ class AddContact extends Component {
   }
 
   render() {
-
+    const { name, email, phone } = this.state;
     return (
       <div className="card mb-3">
         <div className="card-header">
           Add Contact
         </div>
-
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 className="form-control form-control-lg"
-                name="textName"
+                name="name"
                 type="text"
-                value={this.state.value}
+                value={name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                className="form-control form-control-lg"
+                name="email"
+                type="text"
+                value={email}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">phone</label>
+              <input
+                className="form-control form-control-lg"
+                name="phone"
+                type="text"
+                value={phone}
                 onChange={this.handleChange}
               />
             </div>
