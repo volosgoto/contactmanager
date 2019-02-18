@@ -28,7 +28,7 @@ class AddContact extends Component {
 
     const newContact = {
       id: uuid(),
-      name, // yaras name: name
+      name, // same as name: name
       email,
       phone
     };
