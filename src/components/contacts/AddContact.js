@@ -33,6 +33,13 @@ class AddContact extends Component {
     };
 
     dispatch({ type: "ADD_CONTACT", payload: newContact });
+
+    // Clear state
+    this.setState({
+      name: "",
+      email: "",
+      phone: ""
+    });
   }
 
   render() {
@@ -50,6 +57,7 @@ class AddContact extends Component {
                     <label htmlFor="name">Name</label>
                     <input
                       className="form-control form-control-lg"
+                      placeholder="Enter name..."
                       name="name"
                       type="text"
                       value={name}
@@ -60,6 +68,7 @@ class AddContact extends Component {
                     <label htmlFor="email">Email</label>
                     <input
                       className="form-control form-control-lg"
+                      placeholder="Enter email..."
                       name="email"
                       type="email"
                       value={email}
@@ -70,6 +79,7 @@ class AddContact extends Component {
                     <label htmlFor="phone">phone</label>
                     <input
                       className="form-control form-control-lg"
+                      placeholder="Enter phone..."
                       name="phone"
                       type="text"
                       value={phone}
